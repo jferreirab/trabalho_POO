@@ -29,13 +29,13 @@ public class MenuView extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        cadastroMenu = new javax.swing.JMenu();
         clienteMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
+        atividadesMenu = new javax.swing.JMenu();
+        entradaSaidaMenuItem = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
@@ -47,8 +47,8 @@ public class MenuView extends javax.swing.JFrame {
         setTitle("Sistema de Estacionamento");
         setLocationByPlatform(true);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cadastros");
+        cadastroMenu.setMnemonic('f');
+        cadastroMenu.setText("Cadastros");
 
         clienteMenuItem.setMnemonic('o');
         clienteMenuItem.setText("Cliente");
@@ -57,48 +57,62 @@ public class MenuView extends javax.swing.JFrame {
                 clienteMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(clienteMenuItem);
+        cadastroMenu.add(clienteMenuItem);
 
         saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
+        saveMenuItem.setText("teste");
+        saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveMenuItemActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(saveMenuItem);
 
         saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        cadastroMenu.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        cadastroMenu.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
+        menuBar.add(cadastroMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        atividadesMenu.setMnemonic('e');
+        atividadesMenu.setText("Atividades");
+        atividadesMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atividadesMenuActionPerformed(evt);
+            }
+        });
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
+        entradaSaidaMenuItem.setMnemonic('t');
+        entradaSaidaMenuItem.setText("Registra Entrada e Saida");
+        entradaSaidaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradaSaidaMenuItemActionPerformed(evt);
+            }
+        });
+        atividadesMenu.add(entradaSaidaMenuItem);
 
         copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
+        atividadesMenu.add(copyMenuItem);
 
         pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        atividadesMenu.add(pasteMenuItem);
 
         deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        atividadesMenu.add(deleteMenuItem);
 
-        menuBar.add(editMenu);
+        menuBar.add(atividadesMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -119,14 +133,12 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -142,6 +154,27 @@ public class MenuView extends javax.swing.JFrame {
         this.desktopPane.add(clienteView);
         clienteView.setVisible(true);
     }//GEN-LAST:event_clienteMenuItemActionPerformed
+
+    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atividadesMenuActionPerformed
+       
+    }//GEN-LAST:event_atividadesMenuActionPerformed
+
+    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
+         RegistraEntradaSaidaView registraEntradaSaidaView = new RegistraEntradaSaidaView();
+        this.desktopPane.add(registraEntradaSaidaView);
+        registraEntradaSaidaView.setVisible(true);
+                
+    }//GEN-LAST:event_saveMenuItemActionPerformed
+
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+       
+    }//GEN-LAST:event_copyMenuItemActionPerformed
+
+    private void entradaSaidaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaSaidaMenuItemActionPerformed
+        RegistraEntradaSaidaView registraEntradaSaidaView = new RegistraEntradaSaidaView();
+        this.desktopPane.add(registraEntradaSaidaView);
+        registraEntradaSaidaView.setVisible(true);
+    }//GEN-LAST:event_entradaSaidaMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,15 +213,15 @@ public class MenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenu atividadesMenu;
+    private javax.swing.JMenu cadastroMenu;
     private javax.swing.JMenuItem clienteMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem entradaSaidaMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem pasteMenuItem;

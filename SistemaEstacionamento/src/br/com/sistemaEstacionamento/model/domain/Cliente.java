@@ -36,7 +36,10 @@ public class Cliente implements Serializable{
     private String email;
     
     @Column(name = "CPF")
-    private Long cpf;
+    private String cpf;
+    
+    @Column(name = "TELEFONE")
+    private String telefone;
     
     /**
      *
@@ -83,7 +86,7 @@ public class Cliente implements Serializable{
         return email;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -99,8 +102,16 @@ public class Cliente implements Serializable{
         this.email = email;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     
    
