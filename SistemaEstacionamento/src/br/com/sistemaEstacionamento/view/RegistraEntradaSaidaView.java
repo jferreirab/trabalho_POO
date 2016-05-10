@@ -31,7 +31,7 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnpesquisar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         pnlCampos = new javax.swing.JPanel();
         cbTipoEstadia = new javax.swing.JComboBox<String>();
         lblTpEstadia = new javax.swing.JLabel();
@@ -49,8 +49,6 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setClosable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Entrada e Saída de Veiculos");
 
         pnlBotoes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -66,22 +64,22 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton4.setText("jButton4");
+        btnExcluir.setText("Excluir");
 
         javax.swing.GroupLayout pnlBotoesLayout = new javax.swing.GroupLayout(pnlBotoes);
         pnlBotoes.setLayout(pnlBotoesLayout);
         pnlBotoesLayout.setHorizontalGroup(
             pnlBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBotoesLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotoesLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(btnNovo)
                 .addGap(33, 33, 33)
                 .addComponent(btnSalvar)
                 .addGap(33, 33, 33)
                 .addComponent(btnpesquisar)
                 .addGap(31, 31, 31)
-                .addComponent(jButton4)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addComponent(btnExcluir)
+                .addGap(42, 42, 42))
         );
         pnlBotoesLayout.setVerticalGroup(
             pnlBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,8 +89,8 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
                     .addComponent(btnpesquisar)
-                    .addComponent(jButton4))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(btnExcluir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlCampos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -224,16 +222,21 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 236, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -257,11 +260,11 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnpesquisar;
     private javax.swing.JComboBox<String> cbTipoEstadia;
-    private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDataEntrada;
