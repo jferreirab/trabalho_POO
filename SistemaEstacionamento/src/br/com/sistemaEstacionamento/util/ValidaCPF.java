@@ -7,7 +7,7 @@ package br.com.sistemaEstacionamento.util;
 import java.util.InputMismatchException;
 /**
  *
- * @author jferr
+ * @author jferr1
  */
 public class ValidaCPF {
    
