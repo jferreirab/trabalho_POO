@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
@@ -35,7 +35,7 @@
               <Component id="pnlBotoes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlCampos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="256" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="248" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,14 +120,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblEntrada" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPlaca" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTipoPagamento" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTpEstadia" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbTipoPagamento" min="-2" pref="175" max="-2" attributes="0"/>
-                      <Component id="txtPlaca" min="-2" pref="83" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cbTipoEstadia" max="32767" attributes="0"/>
+                          <Component id="txtPlaca" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="txtEntrada" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -138,38 +142,45 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblTipoPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbTipoPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTpEstadia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbTipoEstadia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JComboBox" name="cbTipoPagamento">
+        <Component class="javax.swing.JComboBox" name="cbTipoEstadia">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Hora"/>
+                <StringItem index="1" value="Di&#xe1;ria"/>
+                <StringItem index="2" value="Mensal"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbTipoEstadiaActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTipoPagamento">
+        <Component class="javax.swing.JLabel" name="lblTpEstadia">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo de Pagamento:"/>
+            <Property name="text" type="java.lang.String" value="Tipo de Estadia:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPlaca">
@@ -178,9 +189,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPlaca">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{&#xd;&#xa;javax.swing.text.MaskFormatter placa= new javax.swing.text.MaskFormatter(&quot;UUU-####&quot;);&#xd;&#xa;txtPlaca = new javax.swing.JFormattedTextField(placa);&#xd;&#xa;}&#xd;&#xa;catch (Exception e){&#xd;&#xa;}"/>
-          </AuxValues>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPlacaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEntrada">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Entrada:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtEntrada">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
