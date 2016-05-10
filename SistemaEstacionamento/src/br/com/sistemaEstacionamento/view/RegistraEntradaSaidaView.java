@@ -37,8 +37,16 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
         lblTpEstadia = new javax.swing.JLabel();
         lblPlaca = new javax.swing.JLabel();
         txtPlaca = new javax.swing.JTextField();
-        lblEntrada = new javax.swing.JLabel();
-        txtEntrada = new javax.swing.JFormattedTextField();
+        lblDataEntrada = new javax.swing.JLabel();
+        lblDataSaida = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCpf = new javax.swing.JFormattedTextField();
+        txtDataEntrada = new javax.swing.JFormattedTextField();
+        txtDataSaida = new javax.swing.JFormattedTextField();
+        lblHoraEntrada = new javax.swing.JLabel();
+        lblHoraSaida = new javax.swing.JLabel();
+        txtHoraEntrada = new javax.swing.JFormattedTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setMaximizable(true);
@@ -73,7 +81,7 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
                 .addComponent(btnpesquisar)
                 .addGap(31, 31, 31)
                 .addComponent(jButton4)
-                .addContainerGap(481, Short.MAX_VALUE))
+                .addContainerGap(486, Short.MAX_VALUE))
         );
         pnlBotoesLayout.setVerticalGroup(
             pnlBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,8 +104,10 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
             }
         });
 
+        lblTpEstadia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTpEstadia.setText("Tipo de Estadia:");
 
+        lblPlaca.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPlaca.setText("Placa:");
 
         txtPlaca.addActionListener(new java.awt.event.ActionListener() {
@@ -106,26 +116,81 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEntrada.setText("Entrada:");
+        lblDataEntrada.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDataEntrada.setText("Data de Entrada:");
 
-        txtEntrada.setText("jFormattedTextField1");
+        lblDataSaida.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDataSaida.setText("Data de Saída:");
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("CPF:");
+
+        try {
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCpfActionPerformed(evt);
+            }
+        });
+
+        txtDataEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        txtDataSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        lblHoraEntrada.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblHoraEntrada.setText("Horário de Entrada:");
+
+        lblHoraSaida.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblHoraSaida.setText("Horário de Saída:");
+
+        txtHoraEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
 
         javax.swing.GroupLayout pnlCamposLayout = new javax.swing.GroupLayout(pnlCampos);
         pnlCampos.setLayout(pnlCamposLayout);
         pnlCamposLayout.setHorizontalGroup(
             pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCamposLayout.createSequentialGroup()
-                .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEntrada)
-                    .addComponent(lblPlaca)
-                    .addComponent(lblTpEstadia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(55, 55, 55)
                 .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cbTipoEstadia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPlaca))
-                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlCamposLayout.createSequentialGroup()
+                        .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTpEstadia, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlCamposLayout.createSequentialGroup()
+                                .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlCamposLayout.createSequentialGroup()
+                                .addComponent(cbTipoEstadia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(161, 161, 161))))
+                    .addGroup(pnlCamposLayout.createSequentialGroup()
+                        .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblDataEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblDataSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlCamposLayout.createSequentialGroup()
+                                .addComponent(txtDataEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblHoraEntrada))
+                            .addGroup(pnlCamposLayout.createSequentialGroup()
+                                .addComponent(txtDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblHoraSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHoraEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextField1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCamposLayout.setVerticalGroup(
             pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,12 +202,22 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEntrada)
-                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(lblDataEntrada)
+                    .addComponent(txtDataEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHoraEntrada)
+                    .addComponent(txtHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataSaida)
+                    .addComponent(txtDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHoraSaida)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,7 +233,7 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
                 .addComponent(pnlBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 248, Short.MAX_VALUE))
+                .addGap(0, 236, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,13 +243,17 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnpesquisarActionPerformed
 
-    private void cbTipoEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoEstadiaActionPerformed
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbTipoEstadiaActionPerformed
+    }//GEN-LAST:event_txtCpfActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPlacaActionPerformed
+
+    private void cbTipoEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoEstadiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoEstadiaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,12 +262,20 @@ public class RegistraEntradaSaidaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnpesquisar;
     private javax.swing.JComboBox<String> cbTipoEstadia;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel lblEntrada;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblDataEntrada;
+    private javax.swing.JLabel lblDataSaida;
+    private javax.swing.JLabel lblHoraEntrada;
+    private javax.swing.JLabel lblHoraSaida;
     private javax.swing.JLabel lblPlaca;
     private javax.swing.JLabel lblTpEstadia;
     private javax.swing.JPanel pnlBotoes;
     private javax.swing.JPanel pnlCampos;
-    private javax.swing.JFormattedTextField txtEntrada;
+    private javax.swing.JFormattedTextField txtCpf;
+    private javax.swing.JFormattedTextField txtDataEntrada;
+    private javax.swing.JFormattedTextField txtDataSaida;
+    private javax.swing.JFormattedTextField txtHoraEntrada;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }
