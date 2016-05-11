@@ -6,6 +6,13 @@
 package br.com.sistemaEstacionamento.view;
 
 import br.com.sistemaEstacionamento.control.ModeloVeiculoControl;
+import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
+import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 
 /**
  *
