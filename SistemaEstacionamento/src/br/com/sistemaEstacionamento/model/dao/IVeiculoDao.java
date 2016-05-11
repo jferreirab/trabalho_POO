@@ -5,18 +5,18 @@
  */
 package br.com.sistemaEstacionamento.model.dao;
 
-import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
+import br.com.sistemaEstacionamento.model.domain.Veiculo;
 import java.util.List;
 
 /**
  *
  * @author jferr
  */
-public interface IModeloVeiculoDao {
+public interface IVeiculoDao {
     
-    void salvarAtualizar(ModeloVeiculo modeloVeiculo);
+    void salvarAtualizar(Veiculo veiculo);
 
-    void excluir(ModeloVeiculo modeloVeiculo);
+    void excluir(Veiculo veiculo);
 
-    List<ModeloVeiculo> pesquisar(ModeloVeiculo modeloVeiculo);
+    List<Veiculo> pesquisar(Veiculo veiculo);
 }

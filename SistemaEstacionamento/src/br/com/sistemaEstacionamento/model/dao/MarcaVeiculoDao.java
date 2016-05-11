@@ -5,7 +5,6 @@
  */
 package br.com.sistemaEstacionamento.model.dao;
 
-import br.com.sistemaEstacionamento.model.domain.CorVeiculo;
 import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
 import java.util.HashMap;
 import java.util.List;

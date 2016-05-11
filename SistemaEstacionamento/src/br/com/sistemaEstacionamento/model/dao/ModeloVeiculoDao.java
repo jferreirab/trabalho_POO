@@ -37,19 +37,20 @@ public class ModeloVeiculoDao implements IModeloVeiculoDao{
     }
     
     
-   /* @Override
+    @Override
     public List<ModeloVeiculo> pesquisar(ModeloVeiculo modeloVeiculo) {
         return crudDao.pesquisar(getQueryPesquisar(modeloVeiculo),getValoresParametros(modeloVeiculo));
     }
     
     private String getQueryPesquisar(ModeloVeiculo modeloVeiculo) {
-	StringBuilder sb = new StringBuilder("from modeloVeiculo c where 1 = 1 ");
+	StringBuilder sb = new StringBuilder("from ModeloVeiculo c where 1 = 1 ");
         if (modeloVeiculo.getCodigo() != null) {
             sb.append("and c.codigo = :codigo ");
         }
         if (modeloVeiculo.getModelo()!= null && !modeloVeiculo.getModelo().equals("")) {
             sb.append("and c.modelo like :modelo");
         }
+        
         return sb.toString();
     }
 
@@ -62,6 +63,6 @@ public class ModeloVeiculoDao implements IModeloVeiculoDao{
 	        valores.put("modelo","%"+modeloVeiculo.getModelo()+"%");
 	    }
 	    return valores;
-	}*/
+	}
     
 }

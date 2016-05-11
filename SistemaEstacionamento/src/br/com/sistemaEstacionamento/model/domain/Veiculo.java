@@ -5,15 +5,15 @@
  */
 package br.com.sistemaEstacionamento.model.domain;
 
-import java.util.List;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,20 +21,21 @@ import javax.persistence.Table;
  * @author jferr
  */
 @Entity
-@Table(name = "TB_MARCA_VEICULO")
-public class MarcaVeiculo {
+@Table(name = "TB_VEICULO")
+public class Veiculo implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CD_MARCA")
+    @Column(name = "CD_VEICULO")
     private Integer codigo;
     
-    @Column(name="DS_MARCA")
-    private String marca;
+    @Column(name = "DS_PLACA")
+    private String placa;
     
-    @OneToMany(mappedBy = "marcaVeiculo", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY)
-    private List<ModeloVeiculo> modeloVeiculos;
-    
+    @ManyToOne
+	@JoinColumn(name="CLIENTE_id")
+	private Cliente cliente;
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -43,28 +44,26 @@ public class MarcaVeiculo {
         this.codigo = codigo;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
-    public List<ModeloVeiculo> getModeloVeiculos() {
-        return modeloVeiculos;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setModeloVeiculos(List<ModeloVeiculo> modeloVeiculos) {
-        this.modeloVeiculos = modeloVeiculos;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.codigo);
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.codigo);
         return hash;
     }
 
@@ -79,19 +78,12 @@ public class MarcaVeiculo {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MarcaVeiculo other = (MarcaVeiculo) obj;
+        final Veiculo other = (Veiculo) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "" + marca ;
-    }
-
-   
     
     
 }

@@ -5,7 +5,6 @@
  */
 package br.com.sistemaEstacionamento.control;
 
-import br.com.sistemaEstacionamento.model.dao.IMarcaVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.IModeloVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.ModeloVeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
@@ -64,7 +63,7 @@ public class ModeloVeiculoControl {
     
     public void pesquisar() {
         modeloVeiculosTabela.clear();
-//        modeloVeiculosTabela.addAll(modeloVeiculoDao.pesquisar(modeloVeiculo));
+        modeloVeiculosTabela.addAll(modeloVeiculoDao.pesquisar(modeloVeiculo));
 
     }
 
