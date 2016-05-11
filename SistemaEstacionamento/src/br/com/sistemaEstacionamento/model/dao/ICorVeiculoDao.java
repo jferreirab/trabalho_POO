@@ -5,21 +5,17 @@
  */
 package br.com.sistemaEstacionamento.model.dao;
 
-
+import br.com.sistemaEstacionamento.model.domain.CorVeiculo;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author jferr
  */
-public interface ICrudDao<T, I> {
-    
-    void salvarAtualizar(T t, I i);
+public interface ICorVeiculoDao {
+    void salvarAtualizar(CorVeiculo corVeiculo);
 
-    void excluir(T t);
+    void excluir(CorVeiculo corVeiculo);
 
-    List<T> pesquisar(String queryPesquisar, Map<String, Object> valores);
-
-    
+    List<CorVeiculo> pesquisar(CorVeiculo corVeiculo);
 }
