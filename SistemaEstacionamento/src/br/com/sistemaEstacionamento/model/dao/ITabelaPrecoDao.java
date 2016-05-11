@@ -5,21 +5,19 @@
  */
 package br.com.sistemaEstacionamento.model.dao;
 
-
+import br.com.sistemaEstacionamento.model.domain.TabelaPreco;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author jferr
  */
-public interface ICrudDao<T, I> {
+public interface ITabelaPrecoDao  {
     
-    void salvarAtualizar(T t, I i);
+    void salvarAtualizar(TabelaPreco tabelaPreco);
 
-    void excluir(T t);
+    void excluir(TabelaPreco tabelaPreco);
 
-    List<T> pesquisar(String queryPesquisar, Map<String, Object> valores);
-
+    List<TabelaPreco> pesquisar(TabelaPreco tabelaPreco);
     
 }
