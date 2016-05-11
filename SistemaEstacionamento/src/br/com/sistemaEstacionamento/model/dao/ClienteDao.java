@@ -18,7 +18,7 @@ import javax.persistence.EntityManager;
 public class ClienteDao implements IClienteDao{
     private EntityManager entityManager;
 	
-	private ICrudDao<Cliente,Integer> crudDao;
+    private ICrudDao<Cliente,Integer> crudDao;
     
     public ClienteDao() {
         entityManager = Conexao.getEntityManager();
