@@ -5,8 +5,6 @@
  */
 package br.com.sistemaEstacionamento.control;
 
-import br.com.sistemaEstacionamento.model.dao.ClienteDao;
-import br.com.sistemaEstacionamento.model.dao.IClienteDao;
 import br.com.sistemaEstacionamento.model.dao.IVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.VeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.Cliente;
@@ -32,6 +30,10 @@ public class VeiculoControl {
     private List<Veiculo> veiculosTabela;
     
     private final IVeiculoDao veiculoDao;
+    
+    private Cliente clienteSelecionado;
+    
+    private  boolean  bloqueiaCampos = false;
     
     public VeiculoControl(){
         
@@ -105,4 +107,23 @@ public class VeiculoControl {
         propertyChangeSupport.
                 removePropertyChangeListener(e);
     }
+
+    public Cliente getClienteSelecionado() {
+        return clienteSelecionado;
+    }
+
+    public void setClienteSelecionado(Cliente clienteSelecionado) {
+        this.clienteSelecionado = clienteSelecionado;
+        setBloqueiaCampos(true);
+    }
+
+    public boolean isBloqueiaCampos() {
+        return bloqueiaCampos;
+    }
+
+    public void setBloqueiaCampos(boolean bloqueiaCampos) {
+        this.bloqueiaCampos = bloqueiaCampos;
+    }
+    
+    
 }

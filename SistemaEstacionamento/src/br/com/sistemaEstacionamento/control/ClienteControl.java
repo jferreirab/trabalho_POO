@@ -30,9 +30,12 @@ public class ClienteControl {
     
     private final IClienteDao clienteDao;
     
+    private VeiculoControl veiculoControl;
+    
     public ClienteControl(){
         
         this.clienteDao = new ClienteDao();
+        this.veiculoControl = new VeiculoControl();
         clientesTabela = ObservableCollections.observableList(
                       new ArrayList<Cliente>());
         this.novo();
@@ -77,6 +80,7 @@ public class ClienteControl {
         this.clienteSelecionado = clienteSelecionado;
         if (this.clienteSelecionado != null) {
             setCliente(clienteSelecionado);
+            veiculoControl.setClienteSelecionado(clienteSelecionado);
         }
     }
     
@@ -91,6 +95,11 @@ public class ClienteControl {
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
     }
+
+    public VeiculoControl getVeiculoControl() {
+        return veiculoControl;
+    }
+    
     
      public void addPropertyChangeListener(
             PropertyChangeListener e) {
