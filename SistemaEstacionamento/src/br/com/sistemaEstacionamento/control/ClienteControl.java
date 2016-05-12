@@ -37,6 +37,7 @@ public class ClienteControl {
         
         this.veiculoControl = new VeiculoControl();
         this.clienteDao = new ClienteDao();
+        this.veiculoControl = new VeiculoControl();
         clientesTabela = ObservableCollections.observableList(
                       new ArrayList<Cliente>());
         this.novo();

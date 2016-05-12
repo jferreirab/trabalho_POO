@@ -37,6 +37,7 @@ public class VeiculoControl {
     
     private  boolean  bloqueiaCampos = false;
     
+       
     private List<ModeloVeiculo> modeloVeiculosTabela;
     
     private List<CorVeiculo> corVeiculosTabela;
@@ -144,6 +145,7 @@ public class VeiculoControl {
         this.bloqueiaCampos = bloqueiaCampos;
     }
 
+
     public List<ModeloVeiculo> getModeloVeiculosTabela() {
         return modeloVeiculosTabela;
     }
@@ -164,3 +166,4 @@ public class VeiculoControl {
     
     
 }
+
