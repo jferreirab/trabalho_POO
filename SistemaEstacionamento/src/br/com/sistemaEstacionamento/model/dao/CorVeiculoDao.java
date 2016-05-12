@@ -17,9 +17,9 @@ import javax.persistence.EntityManager;
  */
 public class CorVeiculoDao implements ICorVeiculoDao{
     
-     private EntityManager entityManager;
+     private final EntityManager entityManager;
 	
-    private ICrudDao<CorVeiculo,Integer> crudDao;
+    private final ICrudDao<CorVeiculo,Integer> crudDao;
     
     public CorVeiculoDao() {
         entityManager = Conexao.getEntityManager();
@@ -42,8 +42,8 @@ public class CorVeiculoDao implements ICorVeiculoDao{
         return crudDao.pesquisar(getQueryPesquisar(corVeiculo),getValoresParametros(corVeiculo));
     }
     
-	private String getQueryPesquisar(CorVeiculo corVeiculo) {
-		StringBuilder sb = new StringBuilder("from CorVeiculo c where 1 = 1 ");
+    private String getQueryPesquisar(CorVeiculo corVeiculo) {
+	StringBuilder sb = new StringBuilder("from CorVeiculo c where 1 = 1 ");
         if (corVeiculo.getCodigo() != null) {
             sb.append("and c.codigo = :codigo ");
         }
@@ -51,17 +51,17 @@ public class CorVeiculoDao implements ICorVeiculoDao{
             sb.append("and c.cor like :cor");
         }
         return sb.toString();
-	}
+    }
 
-	private Map<String, Object> getValoresParametros(CorVeiculo corVeiculo) {
-		Map<String,Object> valores = new HashMap<>();
-		if (corVeiculo.getCodigo() != null) {
-	        valores.put("codigo",corVeiculo.getCodigo());
-	    }
-	    if (corVeiculo.getCor()!= null && !corVeiculo.getCor().equals("")) {
-	        valores.put("cor","%"+corVeiculo.getCor()+"%");
-	    }
-	    return valores;
-	}
+    private Map<String, Object> getValoresParametros(CorVeiculo corVeiculo) {
+	Map<String,Object> valores = new HashMap<>();
+	if (corVeiculo.getCodigo() != null) {
+            valores.put("codigo",corVeiculo.getCodigo());
+        }
+        if (corVeiculo.getCor()!= null && !corVeiculo.getCor().equals("")) {
+            valores.put("cor","%"+corVeiculo.getCor()+"%");
+        }
+        return valores;
+    }
     
 }
