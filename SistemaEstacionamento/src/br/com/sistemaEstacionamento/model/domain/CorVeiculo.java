@@ -64,10 +64,12 @@ public class CorVeiculo {
             return false;
         }
         final CorVeiculo other = (CorVeiculo) obj;
-        if (!Objects.equals(this.codigo, other.codigo)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.codigo, other.codigo);
+    }
+
+    @Override
+    public String toString() {
+        return  cor ;
     }
     
     

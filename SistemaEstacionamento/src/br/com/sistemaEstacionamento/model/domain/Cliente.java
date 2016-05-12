@@ -126,6 +126,11 @@ public class Cliente implements Serializable{
     public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
+
+    @Override
+    public String toString() {
+        return codigo +" - " + nome ;
+    }
     
    
     

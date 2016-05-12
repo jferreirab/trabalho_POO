@@ -5,11 +5,11 @@
  */
 package br.com.sistemaEstacionamento.control;
 
-import br.com.sistemaEstacionamento.model.dao.ClienteDao;
-import br.com.sistemaEstacionamento.model.dao.IClienteDao;
 import br.com.sistemaEstacionamento.model.dao.IVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.VeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.Cliente;
+import br.com.sistemaEstacionamento.model.domain.CorVeiculo;
+import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
 import br.com.sistemaEstacionamento.model.domain.Veiculo;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -33,16 +33,37 @@ public class VeiculoControl {
     
     private final IVeiculoDao veiculoDao;
     
+    private Cliente clienteSelecionado;
+    
+    private  boolean  bloqueiaCampos = false;
+    
+    private List<ModeloVeiculo> modeloVeiculosTabela;
+    
+    private List<CorVeiculo> corVeiculosTabela;
+    
+    private final ModeloVeiculoControl modeloVeiculoControl;
+    
+    private final CorVeiculoControl corVeiculoControl;
+    
     public VeiculoControl(){
         
         this.veiculoDao = new VeiculoDao();
+        this.modeloVeiculoControl = new ModeloVeiculoControl();
+        this.corVeiculoControl = new CorVeiculoControl();
         veiculosTabela = ObservableCollections.observableList(
                       new ArrayList<Veiculo>());
+        this.modeloVeiculosTabela = modeloVeiculoControl.getModeloVeiculosTabela();
+        this.corVeiculosTabela = corVeiculoControl.getCorVeiculosTabela();
         this.novo();
-        this.pesquisar();
+        //this.pesquisar();
     }
     public void novo() {
         setVeiculo(new Veiculo());
+        this.veiculo.setCliente(clienteSelecionado);
+    }
+    public void limpaTela() {
+        setVeiculo(new Veiculo());
+        veiculosTabela.clear();
     }
     public void salvar()  {
         
@@ -105,4 +126,41 @@ public class VeiculoControl {
         propertyChangeSupport.
                 removePropertyChangeListener(e);
     }
+
+    public Cliente getClienteSelecionado() {
+        return clienteSelecionado;
+    }
+
+    public void setClienteSelecionado(Cliente clienteSelecionado) {
+        this.clienteSelecionado = clienteSelecionado;
+        setBloqueiaCampos(true);
+    }
+
+    public boolean isBloqueiaCampos() {
+        return bloqueiaCampos;
+    }
+
+    public void setBloqueiaCampos(boolean bloqueiaCampos) {
+        this.bloqueiaCampos = bloqueiaCampos;
+    }
+
+    public List<ModeloVeiculo> getModeloVeiculosTabela() {
+        return modeloVeiculosTabela;
+    }
+
+    public void setModeloVeiculosTabela(List<ModeloVeiculo> modeloVeiculosTabela) {
+        this.modeloVeiculosTabela = modeloVeiculosTabela;
+    }
+
+    public List<CorVeiculo> getCorVeiculosTabela() {
+        return corVeiculosTabela;
+    }
+
+    public void setCorVeiculosTabela(List<CorVeiculo> corVeiculosTabela) {
+        this.corVeiculosTabela = corVeiculosTabela;
+    }
+    
+    
+    
+    
 }

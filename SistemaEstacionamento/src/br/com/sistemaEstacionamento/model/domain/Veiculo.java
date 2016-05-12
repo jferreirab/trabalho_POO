@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -34,7 +35,13 @@ public class Veiculo implements Serializable{
     
     @ManyToOne
 	@JoinColumn(name="CLIENTE_id")
-	private Cliente cliente;
+    private Cliente cliente;
+    
+    @OneToOne
+    private ModeloVeiculo modeloVeiculo;
+    
+    @OneToOne
+    private CorVeiculo corVeiculo;
 
     public Integer getCodigo() {
         return codigo;
@@ -60,6 +67,23 @@ public class Veiculo implements Serializable{
         this.cliente = cliente;
     }
 
+    public ModeloVeiculo getModeloVeiculo() {
+        return modeloVeiculo;
+    }
+
+    public void setModeloVeiculo(ModeloVeiculo modeloVeiculo) {
+        this.modeloVeiculo = modeloVeiculo;
+    }
+
+    public CorVeiculo getCorVeiculo() {
+        return corVeiculo;
+    }
+
+    public void setCorVeiculo(CorVeiculo corVeiculo) {
+        this.corVeiculo = corVeiculo;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -5,6 +5,7 @@
  */
 package br.com.sistemaEstacionamento.model.dao;
 
+import br.com.sistemaEstacionamento.model.domain.Cliente;
 import br.com.sistemaEstacionamento.model.domain.Veiculo;
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface IVeiculoDao {
     void excluir(Veiculo veiculo);
 
     List<Veiculo> pesquisar(Veiculo veiculo);
+    
+    List<Veiculo> pesquisarPorCliente(Cliente cliente );
 }

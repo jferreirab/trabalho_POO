@@ -83,6 +83,11 @@ public class ModeloVeiculo {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return  codigo + " - " + marcaVeiculo + " - " + modelo ;
+    }
     
     
 }

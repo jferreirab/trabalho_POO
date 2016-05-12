@@ -8,6 +8,7 @@ package br.com.sistemaEstacionamento.control;
 import br.com.sistemaEstacionamento.model.dao.ClienteDao;
 import br.com.sistemaEstacionamento.model.dao.IClienteDao;
 import br.com.sistemaEstacionamento.model.domain.Cliente;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -30,8 +31,11 @@ public class ClienteControl {
     
     private final IClienteDao clienteDao;
     
+    private VeiculoControl veiculoControl;
+    
     public ClienteControl(){
         
+        this.veiculoControl = new VeiculoControl();
         this.clienteDao = new ClienteDao();
         clientesTabela = ObservableCollections.observableList(
                       new ArrayList<Cliente>());
@@ -41,7 +45,7 @@ public class ClienteControl {
     public void novo() {
         setCliente(new Cliente());
     }
-    public void salvar()  {
+    public void salvar()  throws Exception{
         //cliente.validar();
         clienteDao.salvarAtualizar(cliente);        
         novo();
@@ -77,6 +81,7 @@ public class ClienteControl {
         this.clienteSelecionado = clienteSelecionado;
         if (this.clienteSelecionado != null) {
             setCliente(clienteSelecionado);
+            veiculoControl.setClienteSelecionado(clienteSelecionado);
         }
     }
     
@@ -91,6 +96,11 @@ public class ClienteControl {
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
     }
+
+    public VeiculoControl getVeiculoControl() {
+        return veiculoControl;
+    }
+    
     
      public void addPropertyChangeListener(
             PropertyChangeListener e) {
