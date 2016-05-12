@@ -46,6 +46,9 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
     private List<Veiculo> veiculos;
     
+    @Column(name="DS_ENDERECO")
+    private String endereco;
+    
     /**
      *
      */
@@ -130,6 +133,14 @@ public class Cliente implements Serializable{
     @Override
     public String toString() {
         return codigo +" - " + nome ;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
     
    
