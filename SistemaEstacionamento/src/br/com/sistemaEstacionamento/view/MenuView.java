@@ -31,10 +31,10 @@ public class MenuView extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         cadastroMenu = new javax.swing.JMenu();
         clienteMenuItem = new javax.swing.JMenuItem();
-        tabelaPrecoMenuItem = new javax.swing.JMenuItem();
         corVeiculoMenuItem = new javax.swing.JMenuItem();
         marcaVeiculoMenuItem = new javax.swing.JMenuItem();
         modeloVeiculoMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         atividadesMenu = new javax.swing.JMenu();
         entradaSaidaMenuItem = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
@@ -59,15 +59,6 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
         cadastroMenu.add(clienteMenuItem);
-
-        tabelaPrecoMenuItem.setMnemonic('s');
-        tabelaPrecoMenuItem.setText("Tabela de Preço");
-        tabelaPrecoMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabelaPrecoMenuItemActionPerformed(evt);
-            }
-        });
-        cadastroMenu.add(tabelaPrecoMenuItem);
 
         corVeiculoMenuItem.setMnemonic('a');
         corVeiculoMenuItem.setText("Cor Veiculo");
@@ -94,6 +85,14 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
         cadastroMenu.add(modeloVeiculoMenuItem);
+
+        jMenuItem1.setText("Tabela de Preços");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(jMenuItem1);
 
         menuBar.add(cadastroMenu);
 
@@ -177,12 +176,12 @@ public class MenuView extends javax.swing.JFrame {
        
     }//GEN-LAST:event_atividadesMenuActionPerformed
 
-    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
+    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                             
          MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
         this.desktopPane.add(registraEntradaSaidaView);
         registraEntradaSaidaView.setVisible(true);
                 
-    }//GEN-LAST:event_tabelaPrecoMenuItemActionPerformed
+    }                                                   
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
        
@@ -205,6 +204,12 @@ public class MenuView extends javax.swing.JFrame {
         this.desktopPane.add(modeloVeiculoView);
         modeloVeiculoView.setVisible(true);
     }//GEN-LAST:event_modeloVeiculoMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TabelaPrecoView tabelaPrecoView = new TabelaPrecoView();
+        this.desktopPane.add(tabelaPrecoView);
+        tabelaPrecoView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,11 +258,11 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem entradaSaidaMenuItem;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem marcaVeiculoMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modeloVeiculoMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem tabelaPrecoMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
