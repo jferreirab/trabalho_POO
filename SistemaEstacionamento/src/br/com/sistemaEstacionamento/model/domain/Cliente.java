@@ -6,14 +6,16 @@
 package br.com.sistemaEstacionamento.model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.sound.midi.Sequencer;
 
 /**
  *
@@ -40,6 +42,12 @@ public class Cliente implements Serializable{
     
     @Column(name = "TELEFONE")
     private String telefone;
+    
+    @OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
+    private List<Veiculo> veiculos;
+    
+    @Column(name="DS_ENDERECO")
+    private String endereco;
     
     /**
      *
@@ -112,6 +120,27 @@ public class Cliente implements Serializable{
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    @Override
+    public String toString() {
+        return codigo +" - " + nome ;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
     
    
