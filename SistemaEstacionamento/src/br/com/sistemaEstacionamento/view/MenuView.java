@@ -37,9 +37,6 @@ public class MenuView extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         atividadesMenu = new javax.swing.JMenu();
         entradaSaidaMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -113,20 +110,6 @@ public class MenuView extends javax.swing.JFrame {
         });
         atividadesMenu.add(entradaSaidaMenuItem);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyMenuItemActionPerformed(evt);
-            }
-        });
-        atividadesMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        atividadesMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        atividadesMenu.add(deleteMenuItem);
-
         menuBar.add(atividadesMenu);
 
         helpMenu.setMnemonic('h');
@@ -153,7 +136,7 @@ public class MenuView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -172,26 +155,12 @@ public class MenuView extends javax.swing.JFrame {
         clienteView.setVisible(true);
     }//GEN-LAST:event_clienteMenuItemActionPerformed
 
-    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atividadesMenuActionPerformed
-       
-    }//GEN-LAST:event_atividadesMenuActionPerformed
-
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                             
          MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
         this.desktopPane.add(registraEntradaSaidaView);
         registraEntradaSaidaView.setVisible(true);
                 
     }                                                   
-
-    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-       
-    }//GEN-LAST:event_copyMenuItemActionPerformed
-
-    private void entradaSaidaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaSaidaMenuItemActionPerformed
-        MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
-        this.desktopPane.add(registraEntradaSaidaView);
-        registraEntradaSaidaView.setVisible(true);
-    }//GEN-LAST:event_entradaSaidaMenuItemActionPerformed
 
     private void corVeiculoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corVeiculoMenuItemActionPerformed
        CorVeiculoView corVeiculoView = new  CorVeiculoView();
@@ -210,6 +179,16 @@ public class MenuView extends javax.swing.JFrame {
         this.desktopPane.add(tabelaPrecoView);
         tabelaPrecoView.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atividadesMenuActionPerformed
+
+    }//GEN-LAST:event_atividadesMenuActionPerformed
+
+    private void entradaSaidaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaSaidaMenuItemActionPerformed
+        MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
+        this.desktopPane.add(registraEntradaSaidaView);
+        registraEntradaSaidaView.setVisible(true);
+    }//GEN-LAST:event_entradaSaidaMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,9 +231,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenu cadastroMenu;
     private javax.swing.JMenuItem clienteMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem corVeiculoMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem entradaSaidaMenuItem;
     private javax.swing.JMenu helpMenu;
@@ -262,7 +239,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem marcaVeiculoMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modeloVeiculoMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
