@@ -160,7 +160,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_atividadesMenuActionPerformed
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-         RegistraEntradaSaidaView registraEntradaSaidaView = new RegistraEntradaSaidaView();
+         MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
         this.desktopPane.add(registraEntradaSaidaView);
         registraEntradaSaidaView.setVisible(true);
                 
@@ -171,7 +171,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_copyMenuItemActionPerformed
 
     private void entradaSaidaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaSaidaMenuItemActionPerformed
-        RegistraEntradaSaidaView registraEntradaSaidaView = new RegistraEntradaSaidaView();
+        MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
         this.desktopPane.add(registraEntradaSaidaView);
         registraEntradaSaidaView.setVisible(true);
     }//GEN-LAST:event_entradaSaidaMenuItemActionPerformed
