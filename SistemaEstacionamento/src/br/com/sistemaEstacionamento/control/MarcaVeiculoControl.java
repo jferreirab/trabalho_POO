@@ -8,6 +8,7 @@ package br.com.sistemaEstacionamento.control;
 import br.com.sistemaEstacionamento.model.dao.IMarcaVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.MarcaVeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -41,7 +42,8 @@ public class MarcaVeiculoControl {
     public void novo() {
         setMarcaVeiculo(new MarcaVeiculo());
     }
-    public void salvar()  {
+    public void salvar()  throws ValidacaoCampoException{
+        marcaVeiculo.validar();
         marcaVeiculoDao.salvarAtualizar(marcaVeiculo);        
         novo();
         pesquisar();

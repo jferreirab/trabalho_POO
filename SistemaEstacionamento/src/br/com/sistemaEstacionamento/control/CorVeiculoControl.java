@@ -8,6 +8,7 @@ package br.com.sistemaEstacionamento.control;
 import br.com.sistemaEstacionamento.model.dao.CorVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.ICorVeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.CorVeiculo;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class CorVeiculoControl {
     public void novo() {
         setCorVeiculo(new CorVeiculo());
     }
-    public void salvar()  {
+    public void salvar() throws ValidacaoCampoException{
+        corVeiculo.validar();
         corVeiculoDao.salvarAtualizar(corVeiculo);        
         novo();
         pesquisar();

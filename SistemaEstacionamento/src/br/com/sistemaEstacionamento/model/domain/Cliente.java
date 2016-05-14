@@ -5,6 +5,7 @@
  */
 package br.com.sistemaEstacionamento.model.domain;
 
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -141,6 +142,18 @@ public class Cliente implements Serializable{
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public void validar() throws ValidacaoCampoException {
+        if(nome == null || nome.equals("")){
+            throw new ValidacaoCampoException("Campo Nome não preenchido!" );
+        }
+        if(email == null || email.equals("")){
+            throw new ValidacaoCampoException("campo Email não Preenchido!");
+        }
+        if(cpf == null || cpf.equals("")){
+             throw new ValidacaoCampoException("campo CPF não Preenchido!");
+        }
     }
     
    

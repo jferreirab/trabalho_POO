@@ -11,6 +11,7 @@ import br.com.sistemaEstacionamento.model.domain.Cliente;
 import br.com.sistemaEstacionamento.model.domain.CorVeiculo;
 import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
 import br.com.sistemaEstacionamento.model.domain.Veiculo;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -66,8 +67,8 @@ public class VeiculoControl {
         setVeiculo(new Veiculo());
         veiculosTabela.clear();
     }
-    public void salvar()  {
-        
+    public void salvar()  throws ValidacaoCampoException{
+        veiculo.validar();
         veiculoDao.salvarAtualizar(veiculo);        
         novo();
         pesquisar();

@@ -5,6 +5,7 @@
  */
 package br.com.sistemaEstacionamento.model.domain;
 
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -109,5 +110,10 @@ public class Veiculo implements Serializable{
         return true;
     }
     
-    
+    public void validar() throws ValidacaoCampoException {
+        if(placa == null || placa.equals("")){
+            throw new ValidacaoCampoException("Campo placa não preenchido!" );
+        }
+        
+    }
 }

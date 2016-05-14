@@ -5,6 +5,8 @@
  */
 package br.com.sistemaEstacionamento.model.domain;
 
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_MODELO_VEICULO")
-public class ModeloVeiculo {
+public class ModeloVeiculo implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,5 +91,10 @@ public class ModeloVeiculo {
         return  codigo + " - " + marcaVeiculo + " - " + modelo ;
     }
     
-    
+   public void validar() throws ValidacaoCampoException {
+        if(modelo == null || modelo.equals("")){
+            throw new ValidacaoCampoException("Campo Modelo não preenchido!" );
+        }
+        
+    } 
 }

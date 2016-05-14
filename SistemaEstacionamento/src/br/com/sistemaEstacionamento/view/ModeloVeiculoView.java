@@ -6,13 +6,9 @@
 package br.com.sistemaEstacionamento.view;
 
 import br.com.sistemaEstacionamento.control.ModeloVeiculoControl;
-import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
-import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
-import java.awt.Component;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,25 +16,14 @@ import javax.swing.JList;
  */
 public class ModeloVeiculoView extends javax.swing.JInternalFrame {
 
-    private ModeloVeiculoControl modeloVeiculoControl ;
+    private final ModeloVeiculoControl modeloVeiculoControl ;
     /**
      * Creates new form ModeloVeiculoView
      */
     public ModeloVeiculoView() {
         modeloVeiculoControl = new ModeloVeiculoControl();
-        
         initComponents();
-        //iniciaComboBox();
-        /*jComboBox1.setRenderer(new DefaultListCellRenderer(){
-            @Override
-            public Component getListCellRendererComponent( JList<?> jList, Object o , int i,boolean bln, boolean bln1){
-                if(o instanceof MarcaVeiculo){
-                    MarcaVeiculo to=(MarcaVeiculo) o ;
-                    return super.getListCellRendererComponent(jList, to.getMarca(), i, bln, bln1);
-                }
-                return super.getListCellRendererComponent(jList, o, i, bln, bln1);
-            }
-        });*/
+        
     }
 
     public ModeloVeiculoControl getModeloVeiculoControl() {
@@ -57,8 +42,6 @@ public class ModeloVeiculoView extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         SistemaEstacionamentoPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("SistemaEstacionamentoPU").createEntityManager();
-        tbMarcaVeiculoQuery = java.beans.Beans.isDesignTime() ? null : SistemaEstacionamentoPUEntityManager.createQuery("SELECT t FROM TbMarcaVeiculo t");
-        tbMarcaVeiculoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tbMarcaVeiculoQuery.getResultList();
         pnlBotoes = new javax.swing.JPanel();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -257,7 +240,15 @@ public class ModeloVeiculoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        modeloVeiculoControl.salvar();
+        try {
+            modeloVeiculoControl.salvar();
+            JOptionPane.showMessageDialog(this,"Modelo Veiculo salvo com Sucesso:",
+                    "Informação",JOptionPane.INFORMATION_MESSAGE);
+        } catch (ValidacaoCampoException | HeadlessException e) {
+            JOptionPane.showMessageDialog(this,"Erro no Sistema:"+e.getMessage(),
+                    "Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -283,19 +274,11 @@ public class ModeloVeiculoView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlBotoes;
     private javax.swing.JPanel pnlCampos;
     private javax.swing.JPanel pnlTabela;
-    private java.util.List<br.com.sistemaEstacionamento.view.TbMarcaVeiculo> tbMarcaVeiculoList;
-    private javax.persistence.Query tbMarcaVeiculoQuery;
     private javax.swing.JTable tblDados;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtModelo;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private void iniciaComboBox() {
-        
-      // List<MarcaVeiculo> marcaVeiculos =   modeloVeiculoControl.getMarcaVeiculosTabela();
-       
-       // DefaultComboBoxModel model = new DefaultComboBoxModel(marcaVeiculos.toArray());
-       // this.combobox.setModel(model);
-    }
+    
 }

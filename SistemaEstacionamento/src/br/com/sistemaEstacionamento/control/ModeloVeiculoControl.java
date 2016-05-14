@@ -9,6 +9,7 @@ import br.com.sistemaEstacionamento.model.dao.IModeloVeiculoDao;
 import br.com.sistemaEstacionamento.model.dao.ModeloVeiculoDao;
 import br.com.sistemaEstacionamento.model.domain.MarcaVeiculo;
 import br.com.sistemaEstacionamento.model.domain.ModeloVeiculo;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -47,8 +48,8 @@ public class ModeloVeiculoControl {
     public void novo() {
         setModeloVeiculo(new ModeloVeiculo());
     }
-    public void salvar()  {
-       
+    public void salvar() throws ValidacaoCampoException{
+        modeloVeiculo.validar();
         modeloVeiculoDao.salvarAtualizar(modeloVeiculo);        
         novo();
         pesquisar();

@@ -47,7 +47,7 @@ public class ClienteControl {
         setCliente(new Cliente());
     }
     public void salvar()  throws Exception{
-        //cliente.validar();
+        cliente.validar();
         clienteDao.salvarAtualizar(cliente);        
         novo();
         pesquisar();
