@@ -60,12 +60,16 @@ public class MenuView extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         cadastroMenu = new javax.swing.JMenu();
         clienteMenuItem = new javax.swing.JMenuItem();
+        tabelaPrecoMenuItem = new javax.swing.JMenuItem();
         corVeiculoMenuItem = new javax.swing.JMenuItem();
         marcaVeiculoMenuItem = new javax.swing.JMenuItem();
         modeloVeiculoMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         atividadesMenu = new javax.swing.JMenu();
         entradaSaidaMenuItem = new javax.swing.JMenuItem();
+        copyMenuItem = new javax.swing.JMenuItem();
+        pasteMenuItem = new javax.swing.JMenuItem();
+        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -85,6 +89,15 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
         cadastroMenu.add(clienteMenuItem);
+
+        tabelaPrecoMenuItem.setMnemonic('s');
+        tabelaPrecoMenuItem.setText("Tabela de Preço");
+        tabelaPrecoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tabelaPrecoMenuItemActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(tabelaPrecoMenuItem);
 
         corVeiculoMenuItem.setMnemonic('a');
         corVeiculoMenuItem.setText("Cor Veiculo");
@@ -139,6 +152,20 @@ public class MenuView extends javax.swing.JFrame {
         });
         atividadesMenu.add(entradaSaidaMenuItem);
 
+        copyMenuItem.setMnemonic('y');
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
+        atividadesMenu.add(copyMenuItem);
+
+        pasteMenuItem.setMnemonic('p');
+        atividadesMenu.add(pasteMenuItem);
+
+        deleteMenuItem.setMnemonic('d');
+        atividadesMenu.add(deleteMenuItem);
+
         menuBar.add(atividadesMenu);
 
         helpMenu.setMnemonic('h');
@@ -184,9 +211,21 @@ public class MenuView extends javax.swing.JFrame {
         clienteView.setVisible(true);
     }//GEN-LAST:event_clienteMenuItemActionPerformed
 
-    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {                                               
+                                                       
+    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atividadesMenuActionPerformed
        
-    }                                              
+    }//GEN-LAST:event_atividadesMenuActionPerformed
+
+    private void tabelaPrecoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaPrecoMenuItemActionPerformed
+         TabelaPrecoView tabelaPrecoView = new TabelaPrecoView();
+        this.desktopPane.add(tabelaPrecoView);
+        tabelaPrecoView.setVisible(true);
+                
+    }//GEN-LAST:event_tabelaPrecoMenuItemActionPerformed
+
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+       
+    }//GEN-LAST:event_copyMenuItemActionPerformed
     
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                             
          MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
@@ -211,7 +250,11 @@ public class MenuView extends javax.swing.JFrame {
         this.desktopPane.add(tabelaPrecoView);
         tabelaPrecoView.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-   
+
+    private void atividadesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atividadesMenuActionPerformed
+
+    }//GEN-LAST:event_atividadesMenuActionPerformed
+
     private void entradaSaidaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaSaidaMenuItemActionPerformed
         MovimentacaoView registraEntradaSaidaView = new MovimentacaoView();
         this.desktopPane.add(registraEntradaSaidaView);
@@ -259,14 +302,18 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenu cadastroMenu;
     private javax.swing.JMenuItem clienteMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
+    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem corVeiculoMenuItem;
+    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem entradaSaidaMenuItem;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem marcaVeiculoMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modeloVeiculoMenuItem;
+    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenuItem tabelaPrecoMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
