@@ -231,8 +231,10 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         try {
-            usuarioControl.salvar();
-            JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            if (usuarioControl.salvar())
+                JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            else 
+                JOptionPane.showMessageDialog(this, "Este login já existe", "Login existente", JOptionPane.WARNING_MESSAGE);
         } 
         catch (Exception e){
             JOptionPane.showMessageDialog(this, "Erro no sistema: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

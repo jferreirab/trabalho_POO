@@ -36,11 +36,23 @@ public class UsuarioControl {
     public void novo() {
         setUsuario(new Usuario());
     }
-    public void salvar() throws NoSuchAlgorithmException, UnsupportedEncodingException  {
-        usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
-        usuarioDao.salvarAtualizar(usuario);        
-        novo();
-        pesquisar();
+    public boolean salvar() throws NoSuchAlgorithmException, UnsupportedEncodingException  {
+        
+        Usuario usuarioValidarLogin = new Usuario();
+        usuarioValidarLogin.setCodigoUsuario(null);
+        usuarioValidarLogin.setLogin(usuario.getLogin());
+        usuarioValidarLogin.setSenha("");
+        usuarioValidarLogin.setCodigoPerfil(null);
+        
+        if (usuarioDao.pesquisar(usuario).size() > 0)
+            return false;
+        else {
+            usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
+            usuarioDao.salvarAtualizar(usuario);        
+            novo();
+            pesquisar();
+            return true;
+        }
     }
 
     public void excluir() throws NoSuchAlgorithmException, UnsupportedEncodingException{
@@ -66,7 +78,7 @@ public class UsuarioControl {
         {
             List<Usuario> listaUsuario = new ArrayList<Usuario>();
             listaUsuario = usuarioDao.pesquisar(usuario);
-            if (listaUsuario.size() > 0){
+            if (usuarioDao.pesquisar(usuario).size() > 0){
                 this.perfilLogado = listaUsuario.get(0).getCodigoPerfil();
                 return true;
             }

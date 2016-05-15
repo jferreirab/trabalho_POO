@@ -25,26 +25,27 @@ public class MenuView extends javax.swing.JFrame {
         CarregadorMenuPerfil carregadorMenu;
         Map<String, Boolean> menuVisibilidade = new HashMap<>();
         
-        try {
-            if (UsuarioControl.perfilLogado == 1){
-                carregadorMenu = PerfilUsuario.ADMINISTRADOR.getCarregadorMenu();
-                menuVisibilidade = carregadorMenu.carregarMenu();
+        //try {
+            if (UsuarioControl.perfilLogado != 1){
+                //carregadorMenu = PerfilUsuario.ADMINISTRADOR.getCarregadorMenu();
+                //menuVisibilidade = carregadorMenu.carregarMenu();
+                cadastroMenu.setVisible(false);
             }
-            else { //(UsuarioControl.perfilLogado != 1)
-                carregadorMenu = PerfilUsuario.OPERADOR.getCarregadorMenu();
-                menuVisibilidade = carregadorMenu.carregarMenu();
-            }
+            //else { //(UsuarioControl.perfilLogado != 1)
+            //    carregadorMenu = PerfilUsuario.OPERADOR.getCarregadorMenu();
+            //    menuVisibilidade = carregadorMenu.carregarMenu();
+            //}
             
-            for (Map.Entry <String, Boolean> parMenuVisibilidade : menuVisibilidade.entrySet()) {
+            //for (Map.Entry <String, Boolean> parMenuVisibilidade : menuVisibilidade.entrySet()) {
                 //Component[] componentes = this.getComponents();
-                ((javax.swing.JMenu)parMenuVisibilidade.getKey().toString()).setVisible(parMenuVisibilidade.get(chave);
-            }
+            //    ((javax.swing.JMenu)parMenuVisibilidade.getKey().toString()).setVisible(parMenuVisibilidade.get(chave);
+            //}
         
-        } catch (InstantiationException ex) {
-            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //} catch (InstantiationException ex) {
+        //    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+        //} catch (IllegalAccessException ex) {
+        //    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+        //}
     }
 
     /**
@@ -64,6 +65,7 @@ public class MenuView extends javax.swing.JFrame {
         marcaVeiculoMenuItem = new javax.swing.JMenuItem();
         modeloVeiculoMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         atividadesMenu = new javax.swing.JMenu();
         entradaSaidaMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -73,6 +75,8 @@ public class MenuView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Estacionamento");
         setLocationByPlatform(true);
+
+        desktopPane.setDoubleBuffered(true);
 
         cadastroMenu.setMnemonic('f');
         cadastroMenu.setText("Cadastros");
@@ -119,6 +123,14 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
         cadastroMenu.add(jMenuItem1);
+
+        jMenuItem2.setText("Usuário");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(jMenuItem2);
 
         menuBar.add(cadastroMenu);
 
@@ -218,40 +230,13 @@ public class MenuView extends javax.swing.JFrame {
         registraEntradaSaidaView.setVisible(true);
     }//GEN-LAST:event_entradaSaidaMenuItemActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        UsuarioView usuarioView = new UsuarioView();
+        this.desktopPane.add(usuarioView);
+        usuarioView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuView().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -264,6 +249,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem entradaSaidaMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem marcaVeiculoMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modeloVeiculoMenuItem;

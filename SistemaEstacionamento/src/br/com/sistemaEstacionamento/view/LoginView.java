@@ -1,18 +1,22 @@
 package br.com.sistemaEstacionamento.view;
 
-import br.com.sistemaEstacionamento.control.UsuarioControl;
 import javax.swing.JOptionPane;
+import br.com.sistemaEstacionamento.control.UsuarioControl;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daniel
  */
-public class LoginView extends javax.swing.JInternalFrame {
+public class LoginView extends javax.swing.JFrame {
 
-    private UsuarioControl usuarioControl;
-        
+        private UsuarioControl usuarioControl;
+
     public LoginView() {
         initComponents();
-        setSize(500, 304);
     }
 
     /**
@@ -26,42 +30,40 @@ public class LoginView extends javax.swing.JInternalFrame {
 
         lblLogin = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        txtLogin = new javax.swing.JTextField();
+        txtlogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        btnOk = new javax.swing.JButton();
+        btnOk = new javax.swing.JToggleButton();
         lblImagemFundo = new javax.swing.JLabel();
 
-        setClosable(true);
-        setTitle("Estacionamento");
-        setToolTipText("");
-        setPreferredSize(new java.awt.Dimension(100, 100));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Estacionamento");
+        setPreferredSize(new java.awt.Dimension(500, 350));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         lblLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Login:");
         getContentPane().add(lblLogin);
-        lblLogin.setBounds(140, 240, 60, 20);
+        lblLogin.setBounds(140, 220, 60, 22);
 
         lblSenha.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
         getContentPane().add(lblSenha);
-        lblSenha.setBounds(140, 260, 70, 20);
+        lblSenha.setBounds(130, 260, 70, 22);
 
-        txtLogin.addActionListener(new java.awt.event.ActionListener() {
+        txtlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoginActionPerformed(evt);
+                txtloginActionPerformed(evt);
             }
         });
-        getContentPane().add(txtLogin);
-        txtLogin.setBounds(210, 240, 90, 20);
-
-        txtSenha.setToolTipText("");
+        getContentPane().add(txtlogin);
+        txtlogin.setBounds(200, 220, 110, 30);
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(210, 260, 90, 20);
+        txtSenha.setBounds(200, 260, 110, 30);
 
-        btnOk.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnOk.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,43 +71,83 @@ public class LoginView extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnOk);
-        btnOk.setBounds(310, 240, 60, 40);
+        btnOk.setBounds(320, 230, 59, 50);
 
-        lblImagemFundo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemaEstacionamento/view/bakcground.jpg"))); // NOI18N
-        lblImagemFundo.setText("Senha");
+        lblImagemFundo.setMaximumSize(null);
+        lblImagemFundo.setMinimumSize(null);
+        lblImagemFundo.setPreferredSize(new java.awt.Dimension(500, 304));
         getContentPane().add(lblImagemFundo);
-        lblImagemFundo.setBounds(0, 0, 561, 304);
+        lblImagemFundo.setBounds(0, 0, 500, 304);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
+    private void txtloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoginActionPerformed
+    }//GEN-LAST:event_txtloginActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        if (usuarioControl.realizarLogin()){
-            MenuView menuView = new MenuView();
-            this.desktopPane.add(menuView);
-            menuView.setVisible(true);
-        }
-        else 
-        {
-            txtSenha.setText("");
-            JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
-        }
-       
+        try {
+            usuarioControl = new UsuarioControl();
+            
+            if (usuarioControl.realizarLogin()){
+                MenuView menuView = new MenuView();
+                this.add(menuView);
+                menuView.setVisible(true);
+            }
+            else 
+            {
+                txtSenha.setText("");
+                JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
+            }
+        
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btnOkActionPerformed
 
-   
-    private javax.swing.JDesktopPane desktopPane;
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginView().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOk;
+    private javax.swing.JToggleButton btnOk;
     private javax.swing.JLabel lblImagemFundo;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
-    private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtlogin;
     // End of variables declaration//GEN-END:variables
 }
