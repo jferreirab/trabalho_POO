@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  */
 public class LoginView extends javax.swing.JFrame {
 
-        private UsuarioControl usuarioControl;
+    private UsuarioControl usuarioControl;
 
     public LoginView() {
         initComponents();
@@ -27,6 +27,7 @@ public class LoginView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         lblLogin = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
@@ -53,6 +54,9 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(lblSenha);
         lblSenha.setBounds(130, 260, 70, 22);
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioControl.usuario.login}"), txtlogin, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         txtlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtloginActionPerformed(evt);
@@ -60,6 +64,10 @@ public class LoginView extends javax.swing.JFrame {
         });
         getContentPane().add(txtlogin);
         txtlogin.setBounds(200, 220, 110, 30);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioControl.usuario.senha}"), txtSenha, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         getContentPane().add(txtSenha);
         txtSenha.setBounds(200, 260, 110, 30);
 
@@ -76,9 +84,10 @@ public class LoginView extends javax.swing.JFrame {
         lblImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemaEstacionamento/view/bakcground.jpg"))); // NOI18N
         lblImagemFundo.setMaximumSize(null);
         lblImagemFundo.setMinimumSize(null);
-        lblImagemFundo.setPreferredSize(new java.awt.Dimension(500, 304));
         getContentPane().add(lblImagemFundo);
         lblImagemFundo.setBounds(0, 0, 500, 304);
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,5 +158,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtlogin;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
