@@ -40,23 +40,27 @@ public class TabelaPrecoDao implements ITabelaPrecoDao{
     
     @Override
 	public List<TabelaPreco> pesquisar(TabelaPreco tabelaPreco) {
-        return crudDao.pesquisar(getQueryPesquisar(tabelaPreco),getValoresParametros(tabelaPreco));
+        return crudDao.pesquisar(getQueryPesquisar(tabelaPreco) + getOrderBy(),getValoresParametros(tabelaPreco));
     }
     
-	private String getQueryPesquisar(TabelaPreco tabelaPreco) {
-		StringBuilder sb = new StringBuilder("from TabelaPreco c where 1 = 1 ");
+    private String getQueryPesquisar(TabelaPreco tabelaPreco) {
+            StringBuilder sb = new StringBuilder("from TabelaPreco c where 1 = 1 ");
         if (tabelaPreco.getCodigo() != null) {
             sb.append("and c.codigo = :codigo ");
         }
-        
-        return sb.toString();
-	}
 
-	private Map<String, Object> getValoresParametros(TabelaPreco tabelaPreco) {
-	    Map<String,Object> valores = new HashMap<>();
-	    if (tabelaPreco.getCodigo() != null) {
-	        valores.put("codigo",tabelaPreco.getCodigo());
-	    }
-	    return valores;
-	}
+        return sb.toString();
+    }
+
+    private Map<String, Object> getValoresParametros(TabelaPreco tabelaPreco) {
+        Map<String,Object> valores = new HashMap<>();
+        if (tabelaPreco.getCodigo() != null) {
+            valores.put("codigo",tabelaPreco.getCodigo());
+        }
+        return valores;
+    }
+    private String getOrderBy() {
+	StringBuilder sb = new StringBuilder(" order by tempo desc ");       
+        return sb.toString();
+    }
 }

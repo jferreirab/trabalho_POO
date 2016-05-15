@@ -41,7 +41,7 @@ public class MovimentacaoDao implements IMovimentacaoDao {
     }
 
     private String getQueryPesquisar(Movimentacao movimentacao) {
-        StringBuilder sb = new StringBuilder("from Movimentacao m where 1 = 1 ");
+        StringBuilder sb = new StringBuilder("from Movimentacao m where 1 = 1 and m.dtSaida is null ");
         if (movimentacao.getCodigo() != null) {
             sb.append("and m.codigo = :codigo ");
         }

@@ -6,11 +6,15 @@
 package br.com.sistemaEstacionamento.control;
 
 import br.com.sistemaEstacionamento.model.dao.IMovimentacaoDao;
+import br.com.sistemaEstacionamento.model.dao.ITabelaPrecoDao;
 import br.com.sistemaEstacionamento.model.dao.MovimentacaoDao;
+import br.com.sistemaEstacionamento.model.dao.TabelaPrecoDao;
 import br.com.sistemaEstacionamento.model.domain.Movimentacao;
+import br.com.sistemaEstacionamento.model.domain.TabelaPreco;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
 
@@ -29,9 +33,11 @@ public class MovimentacaoControl {
     private List<Movimentacao> movimentacoesTabela;
 
     private final IMovimentacaoDao movimentacaoDao;
+    private final ITabelaPrecoDao tabelaPrecoDao;
 
     public MovimentacaoControl() {
         this.movimentacaoDao = new MovimentacaoDao();
+        this.tabelaPrecoDao = new TabelaPrecoDao();
         movimentacoesTabela = ObservableCollections.observableList(new ArrayList<Movimentacao>());
         this.novo();
         this.pesquisar();
@@ -73,6 +79,10 @@ public class MovimentacaoControl {
     public void setMovimentacaoSelecionada(Movimentacao clienteSelecionado) {
         this.movimentacaoSelecionada = clienteSelecionado;
         if (this.movimentacaoSelecionada != null) {
+            List<TabelaPreco> tabelaprecos = this.tabelaPrecoDao.pesquisar(new TabelaPreco());
+            this.movimentacaoSelecionada.setTabelaPreco(tabelaprecos);      
+            this.movimentacaoSelecionada.setDtSaida(new Date());
+            this.movimentacaoSelecionada.getPreco();
             setMovimentacao(movimentacaoSelecionada);
         }
     }

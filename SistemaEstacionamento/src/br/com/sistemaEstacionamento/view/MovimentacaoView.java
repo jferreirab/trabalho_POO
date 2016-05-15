@@ -7,9 +7,8 @@ package br.com.sistemaEstacionamento.view;
 //teste
 
 import br.com.sistemaEstacionamento.control.MovimentacaoControl;
-import br.com.sistemaEstacionamento.model.domain.MonetarioConverter;
+import br.com.sistemaEstacionamento.view.converter.MonetarioConverter;
 import br.com.sistemaEstacionamento.model.domain.TipoEstadia;
-import br.com.sistemaEstacionamento.model.domain.TipoEstadiaConverter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -32,7 +31,6 @@ public class MovimentacaoView extends javax.swing.JInternalFrame {
     public MovimentacaoView() {
         movimentacaoControl = new MovimentacaoControl();
         initComponents();
-        this.hideSaida();
         ActionListener task = new ActionListener() {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:hh:ss");
             public void actionPerformed(ActionEvent evt) {
@@ -130,7 +128,6 @@ public class MovimentacaoView extends javax.swing.JInternalFrame {
         cbTipoEstadia.setModel(new javax.swing.DefaultComboBoxModel(TipoEstadia.values()));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacao.tipoEstadia}"), cbTipoEstadia, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        binding.setConverter(new TipoEstadiaConverter());
         bindingGroup.addBinding(binding);
 
         cbTipoEstadia.addActionListener(new java.awt.event.ActionListener() {
@@ -159,14 +156,16 @@ public class MovimentacaoView extends javax.swing.JInternalFrame {
         txtDtEntrada.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacao.dtEntrada}"), txtDtEntrada, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setConverter(new br.com.sistemaEstacionamento.model.domain.DataConverter());
+        binding.setConverter(new br.com.sistemaEstacionamento.view.converter.DataConverter());
         bindingGroup.addBinding(binding);
 
         txtDtSaida.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacao.dtSaida}"), txtDtSaida, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setConverter(new br.com.sistemaEstacionamento.model.domain.DataConverter());
+        binding.setConverter(new br.com.sistemaEstacionamento.view.converter.DataConverter());
         bindingGroup.addBinding(binding);
+
+        jTextField1.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacao.preco}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
         binding.setConverter(new MonetarioConverter());
@@ -227,6 +226,25 @@ public class MovimentacaoView extends javax.swing.JInternalFrame {
         );
 
         tblDados.setOpaque(false);
+
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacoesTabela}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tblDados);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codigo}"));
+        columnBinding.setColumnName("Codigo");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dsPlaca}"));
+        columnBinding.setColumnName("Ds Placa");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dtEntrada}"));
+        columnBinding.setColumnName("Dt Entrada");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tipoEstadia}"));
+        columnBinding.setColumnName("Tipo Estadia");
+        columnBinding.setColumnClass(br.com.sistemaEstacionamento.model.domain.TipoEstadia.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${movimentacaoControl.movimentacaoSelecionada}"), tblDados, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane2.setViewportView(tblDados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

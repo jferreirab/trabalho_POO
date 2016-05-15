@@ -7,6 +7,7 @@ package br.com.sistemaEstacionamento.model.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -49,6 +50,9 @@ public class Movimentacao {
     
     @Column(name = "VR_PRECO",nullable = true, length = 6, precision = 6, scale = 2)
     private BigDecimal preco;
+    
+    @Transient
+    private List<TabelaPreco> tabelaPreco;
 
     public Integer getCodigo() {
         return codigo;
@@ -91,6 +95,14 @@ public class Movimentacao {
     }
 
     public BigDecimal getPreco() {
-        return tipoEstadia.getCalculoEstadia().calculaPreco(new EstadiaDTO(dtSaida, dtSaida));
-    }    
+        return tipoEstadia.getCalculoEstadia().calculaPreco(new EstadiaDTO(dtEntrada, dtSaida,this.tabelaPreco));
+    }
+
+    public void setTabelaPreco(List<TabelaPreco> tabelaPreco) {
+        this.tabelaPreco = tabelaPreco;
+    }   
+    
+    public List<TabelaPreco> getTabelaPreco() {
+        return tabelaPreco;
+    }
 }
