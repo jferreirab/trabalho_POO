@@ -5,6 +5,8 @@
  */
 package br.com.sistemaEstacionamento.model.domain;
 
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_COR_VEICULO")
-public class CorVeiculo {
+public class CorVeiculo implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,6 +74,11 @@ public class CorVeiculo {
         return  cor ;
     }
     
-    
+    public void validar() throws ValidacaoCampoException {
+        if(cor == null || cor.equals("")){
+            throw new ValidacaoCampoException("Campo Cor Veiculo não preenchido!" );
+        }
+        
+    } 
     
 }

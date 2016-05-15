@@ -10,6 +10,7 @@ import br.com.sistemaEstacionamento.control.VeiculoControl;
 import br.com.sistemaEstacionamento.util.ValidaCPF;
 import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
 import br.com.sistemaEstacionamento.view.converter.IntegerConverter;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 //teste
 /**
@@ -642,7 +643,7 @@ public class ClienteView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Veiculo salvo com Sucesso:",
                     "Informação",JOptionPane.INFORMATION_MESSAGE);
         }
-        catch (Exception e) {
+        catch (ValidacaoCampoException | HeadlessException e) {
             JOptionPane.showMessageDialog(this,"Erro no Sistema:"+e.getMessage(),
                     "Erro",JOptionPane.ERROR_MESSAGE);
         }

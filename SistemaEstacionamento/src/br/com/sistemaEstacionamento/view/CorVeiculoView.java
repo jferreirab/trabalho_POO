@@ -6,6 +6,9 @@
 package br.com.sistemaEstacionamento.view;
 
 import br.com.sistemaEstacionamento.control.CorVeiculoControl;
+import br.com.sistemaEstacionamento.util.ValidacaoCampoException;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +16,7 @@ import br.com.sistemaEstacionamento.control.CorVeiculoControl;
  */
 public class CorVeiculoView extends javax.swing.JInternalFrame {
 
-    private CorVeiculoControl corVeiculoControl;
+    private final CorVeiculoControl corVeiculoControl;
     /**
      * Creates new form CorVeiculoView
      */
@@ -215,7 +218,14 @@ public class CorVeiculoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        corVeiculoControl.salvar();
+        try{
+            corVeiculoControl.salvar();
+            JOptionPane.showMessageDialog(this,"Cor Veiculo salvo com Sucesso:",
+                        "Informação",JOptionPane.INFORMATION_MESSAGE);
+        } catch (ValidacaoCampoException | HeadlessException e) {
+            JOptionPane.showMessageDialog(this,"Erro no Sistema:"+e.getMessage(),
+                    "Erro",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

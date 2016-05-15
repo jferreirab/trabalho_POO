@@ -7,24 +7,6 @@
         <Property name="persistenceUnit" type="java.lang.String" value="SistemaEstacionamentoPU"/>
       </Properties>
     </Component>
-    <Component class="javax.persistence.Query" name="tbMarcaVeiculoQuery">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT t FROM TbMarcaVeiculo t"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="SistemaEstacionamentoPUEntityManager"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="tbMarcaVeiculoList">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="tbMarcaVeiculoQuery"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;br.com.sistemaEstacionamento.view.TbMarcaVeiculo&gt;"/>
-      </AuxValues>
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
