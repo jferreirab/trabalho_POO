@@ -8,9 +8,6 @@ package br.com.sistemaEstacionamento.view;
 import br.com.sistemaEstacionamento.control.UsuarioControl;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author jferr, Daniel
@@ -22,31 +19,37 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        if (UsuarioControl.perfilLogado != 1)
+            cadastroMenu.setVisible(false);
+    }
+    
+    /*
+    public MenuView() {
+        initComponents();
         CarregadorMenuPerfil carregadorMenu;
         Map<String, Boolean> menuVisibilidade = new HashMap<>();
         
-        //try {
-            if (UsuarioControl.perfilLogado != 1){
-                //carregadorMenu = PerfilUsuario.ADMINISTRADOR.getCarregadorMenu();
-                //menuVisibilidade = carregadorMenu.carregarMenu();
-                cadastroMenu.setVisible(false);
+        try {
+            if (UsuarioControl.perfilLogado == 1){
+                carregadorMenu = PerfilUsuario.ADMINISTRADOR.getCarregadorMenu();
+                menuVisibilidade = carregadorMenu.carregarMenu();
             }
-            //else { //(UsuarioControl.perfilLogado != 1)
-            //    carregadorMenu = PerfilUsuario.OPERADOR.getCarregadorMenu();
-            //    menuVisibilidade = carregadorMenu.carregarMenu();
-            //}
+            else { //(UsuarioControl.perfilLogado != 1)
+                carregadorMenu = PerfilUsuario.OPERADOR.getCarregadorMenu();
+                menuVisibilidade = carregadorMenu.carregarMenu();
+            }
             
-            //for (Map.Entry <String, Boolean> parMenuVisibilidade : menuVisibilidade.entrySet()) {
-                //Component[] componentes = this.getComponents();
-            //    ((javax.swing.JMenu)parMenuVisibilidade.getKey().toString()).setVisible(parMenuVisibilidade.get(chave);
-            //}
+            for (Map.Entry <String, Boolean> parMenuVisibilidade : menuVisibilidade.entrySet()) {
+                Component[] componentes = this.getComponents();
+                ((javax.swing.JMenu)parMenuVisibilidade.getKey().toString()).setVisible(parMenuVisibilidade.get(chave);
+            }
         
-        //} catch (InstantiationException ex) {
-        //    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
-        //} catch (IllegalAccessException ex) {
-        //    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
-        //}
-    }
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
