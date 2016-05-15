@@ -15,17 +15,19 @@ public class LoginView extends javax.swing.JFrame {
 
     private UsuarioControl usuarioControl;
 
-    public LoginView() {
-        initComponents();
+    public LoginView() throws NoSuchAlgorithmException {
         try {
             usuarioControl = new UsuarioControl();
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        initComponents();
+        
     }
-
+    
+     public UsuarioControl getUsuarioControl() {
+        return usuarioControl;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,8 +108,8 @@ public class LoginView extends javax.swing.JFrame {
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         if (usuarioControl.realizarLogin()){
             MenuView menuView = new MenuView();
-            this.add(menuView);
             menuView.setVisible(true);
+            dispose();
         }
         else 
         {
@@ -146,7 +148,11 @@ public class LoginView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginView().setVisible(true);
+                try {
+                    new LoginView().setVisible(true);
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

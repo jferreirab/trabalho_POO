@@ -44,7 +44,7 @@ public class UsuarioControl {
         usuarioValidarLogin.setSenha("");
         usuarioValidarLogin.setCodigoPerfil(null);
         
-        if (usuarioDao.pesquisar(usuario).size() > 0)
+        if (usuarioDao.pesquisar(usuarioValidarLogin).size() > 0)
             return false;
         else {
             usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
