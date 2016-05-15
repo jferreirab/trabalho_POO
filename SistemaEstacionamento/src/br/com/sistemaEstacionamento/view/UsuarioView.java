@@ -135,7 +135,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioControl.usuario.login}"), txtLogin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        cbCodigoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Operador", " " }));
+        cbCodigoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "" }));
         cbCodigoPerfil.setToolTipText("");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioControl.usuario.codigoPerfil}"), cbCodigoPerfil, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));

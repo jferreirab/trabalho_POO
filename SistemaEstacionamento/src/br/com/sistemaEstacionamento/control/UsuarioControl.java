@@ -80,7 +80,7 @@ public class UsuarioControl {
             List<Usuario> listaUsuario = new ArrayList<Usuario>();
             listaUsuario = usuarioDao.pesquisar(usuario);
             if (usuarioDao.pesquisar(usuario).size() > 0){
-                this.perfilLogado = listaUsuario.get(0).getCodigoPerfil();
+                this.perfilLogado = Integer.parseInt(listaUsuario.get(0).getCodigoPerfil());
                 return true;
             }
             return false;

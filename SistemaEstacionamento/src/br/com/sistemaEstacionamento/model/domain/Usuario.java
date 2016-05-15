@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
     
     //@OneToOne(mappedBy = "usuario", targetEntity = Perfil.class, fetch = FetchType.LAZY)
     @Column(name = "CD_PERFIL")
-    private Integer codigoPerfil;
+    private String codigoPerfil;
             
     public Usuario () {
     }
@@ -59,7 +59,7 @@ public class Usuario implements Serializable {
     /**
      * @return the codigoPerfil
      */
-    public Integer getCodigoPerfil() {
+    public String getCodigoPerfil() {
         return codigoPerfil;
     }
 
@@ -87,7 +87,7 @@ public class Usuario implements Serializable {
     /**
      * @param codigoPerfil the codigoPerfil to set
      */
-    public void setCodigoPerfil(Integer codigoPerfil) {
+    public void setCodigoPerfil(String codigoPerfil) {
         this.codigoPerfil = codigoPerfil;
     }
     

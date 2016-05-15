@@ -52,8 +52,8 @@ public class UsuarioDao implements IUsuarioDao {
         if (usuario.getSenha() != null && !usuario.getSenha().equals("")) 
             sb.append("and usuario.senha like :senha");
         
-        if (usuario.getCodigoPerfil() != null) 
-            sb.append("and usuario.codigoPerfil = :codigoPerfil ");
+        if (usuario.getCodigoPerfil() != null && !usuario.getCodigoPerfil().equals(""))  
+            sb.append("and usuario.codigoPerfil like :codigoPerfil ");
                 
         return sb.toString();
     }
@@ -70,7 +70,7 @@ public class UsuarioDao implements IUsuarioDao {
         if (usuario.getSenha()!= null && !usuario.getSenha().equals("")) 
             valores.put("senha", usuario.getSenha());
         
-        if (usuario.getCodigoPerfil() != null) 
+        if (usuario.getCodigoPerfil() != null && !usuario.getCodigoPerfil().equals("")) 
             valores.put("codigoPerfil", usuario.getCodigoPerfil());
         
         return valores;
