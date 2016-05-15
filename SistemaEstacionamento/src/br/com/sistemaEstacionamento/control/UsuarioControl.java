@@ -10,6 +10,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.observablecollections.ObservableCollections;
 
 /**
@@ -68,7 +70,14 @@ public class UsuarioControl {
         usuariosTabela.addAll(usuarioDao.pesquisar(usuario));
     }
     
-    public boolean realizarLogin() {
+    public List<Usuario> pesquisarLogin(Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        
+        if (usuario.getSenha() != null)
+            usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
+        return (usuarioDao.pesquisar(usuario));
+    }
+    
+    public boolean realizarLogin() throws NoSuchAlgorithmException  {
         //Usuário MASTER
         if (usuario.getLogin().equals("admin") && usuario.getSenha().equals("admin"))
         {
@@ -78,11 +87,22 @@ public class UsuarioControl {
         else
         {
             List<Usuario> listaUsuario = new ArrayList<Usuario>();
-            listaUsuario = usuarioDao.pesquisar(usuario);
-            if (usuarioDao.pesquisar(usuario).size() > 0){
+            
+            try {
+                listaUsuario = pesquisarLogin(usuario);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(UsuarioControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (listaUsuario.size() > 0){
                 this.perfilLogado = Integer.parseInt(listaUsuario.get(0).getCodigoPerfil());
                 return true;
             }
+            /*listaUsuario = usuarioDao.pesquisar(usuario);
+            if (usuarioDao.pesquisar(usuario).size() > 0){
+                this.perfilLogado = Integer.parseInt(listaUsuario.get(0).getCodigoPerfil());
+                return true;
+            }*/
             return false;
         }
     }

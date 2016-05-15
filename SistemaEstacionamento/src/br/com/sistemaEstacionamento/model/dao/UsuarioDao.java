@@ -47,10 +47,10 @@ public class UsuarioDao implements IUsuarioDao {
             sb.append("and usuario.codigoUsuario = :codigoUsuario ");
         
         if (usuario.getLogin() != null && !usuario.getLogin().equals("")) 
-            sb.append("and usuario.login like :login");
+            sb.append("and usuario.login like :login ");
         
         if (usuario.getSenha() != null && !usuario.getSenha().equals("")) 
-            sb.append("and usuario.senha like :senha");
+            sb.append("and usuario.senha like :senha ");
         
         if (usuario.getCodigoPerfil() != null && !usuario.getCodigoPerfil().equals(""))  
             sb.append("and usuario.codigoPerfil like :codigoPerfil ");
@@ -68,10 +68,10 @@ public class UsuarioDao implements IUsuarioDao {
             valores.put("login", "%" + usuario.getLogin() + "%");
         
         if (usuario.getSenha()!= null && !usuario.getSenha().equals("")) 
-            valores.put("senha", usuario.getSenha());
+            valores.put("senha", "%"+usuario.getSenha()+"%");
         
         if (usuario.getCodigoPerfil() != null && !usuario.getCodigoPerfil().equals("")) 
-            valores.put("codigoPerfil", usuario.getCodigoPerfil());
+            valores.put("codigoPerfil","%" +usuario.getCodigoPerfil()+"%");
         
         return valores;
     }

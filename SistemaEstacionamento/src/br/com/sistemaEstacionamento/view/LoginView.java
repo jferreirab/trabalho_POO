@@ -106,15 +106,19 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtloginActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        if (usuarioControl.realizarLogin()){
-            MenuView menuView = new MenuView();
-            menuView.setVisible(true);
-            dispose();
-        }
-        else 
-        {
-            txtSenha.setText("");
-            JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
+        try {
+            if (usuarioControl.realizarLogin()){
+                MenuView menuView = new MenuView();
+                menuView.setVisible(true);
+                dispose();
+            }
+            else
+            {
+                txtSenha.setText("");
+                JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnOkActionPerformed
 
