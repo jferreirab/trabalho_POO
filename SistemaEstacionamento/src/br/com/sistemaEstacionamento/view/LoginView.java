@@ -17,6 +17,13 @@ public class LoginView extends javax.swing.JFrame {
 
     public LoginView() {
         initComponents();
+        try {
+            usuarioControl = new UsuarioControl();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -97,23 +104,16 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtloginActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        try {
-            usuarioControl = new UsuarioControl();
-            
-            if (usuarioControl.realizarLogin()){
-                MenuView menuView = new MenuView();
-                this.add(menuView);
-                menuView.setVisible(true);
-            }
-            else 
-            {
-                txtSenha.setText("");
-                JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
-            }
-        
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
-                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if (usuarioControl.realizarLogin()){
+            MenuView menuView = new MenuView();
+            this.add(menuView);
+            menuView.setVisible(true);
+        }
+        else 
+        {
+            txtSenha.setText("");
+            JOptionPane.showMessageDialog(this, true, "Usuário ou senha inválido(s)!", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnOkActionPerformed
 
     /**

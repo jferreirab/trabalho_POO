@@ -63,7 +63,8 @@ public class UsuarioControl {
 
     public void pesquisar() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         usuariosTabela.clear();
-        usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
+        if (usuario.getSenha() != null)
+            usuario.setSenha(CriptografaString.criptografiaHashMd5(usuario.getSenha()));
         usuariosTabela.addAll(usuarioDao.pesquisar(usuario));
     }
     

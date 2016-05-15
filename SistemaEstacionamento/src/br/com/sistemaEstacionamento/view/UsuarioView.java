@@ -236,6 +236,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             else 
                 JOptionPane.showMessageDialog(this, "Este login já existe", "Login existente", JOptionPane.WARNING_MESSAGE);
         } 
+        //TO DO Exception de chave primária repetida
         catch (Exception e){
             JOptionPane.showMessageDialog(this, "Erro no sistema: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
