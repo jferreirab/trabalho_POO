@@ -71,9 +71,6 @@ public class MenuView extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         atividadesMenu = new javax.swing.JMenu();
         entradaSaidaMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Estacionamento");
@@ -85,7 +82,7 @@ public class MenuView extends javax.swing.JFrame {
         cadastroMenu.setText("Cadastros");
 
         clienteMenuItem.setMnemonic('o');
-        clienteMenuItem.setText("Cliente");
+        clienteMenuItem.setText("Clientes");
         clienteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clienteMenuItemActionPerformed(evt);
@@ -94,7 +91,7 @@ public class MenuView extends javax.swing.JFrame {
         cadastroMenu.add(clienteMenuItem);
 
         corVeiculoMenuItem.setMnemonic('a');
-        corVeiculoMenuItem.setText("Cor Veiculo");
+        corVeiculoMenuItem.setText("Cores Veículos");
         corVeiculoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 corVeiculoMenuItemActionPerformed(evt);
@@ -103,7 +100,7 @@ public class MenuView extends javax.swing.JFrame {
         cadastroMenu.add(corVeiculoMenuItem);
 
         marcaVeiculoMenuItem.setMnemonic('x');
-        marcaVeiculoMenuItem.setText("Marca Veiculo");
+        marcaVeiculoMenuItem.setText("Marcas Veículos");
         marcaVeiculoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 marcaVeiculoMenuItemActionPerformed(evt);
@@ -111,7 +108,7 @@ public class MenuView extends javax.swing.JFrame {
         });
         cadastroMenu.add(marcaVeiculoMenuItem);
 
-        modeloVeiculoMenuItem.setText("Modelo Veiculo");
+        modeloVeiculoMenuItem.setText("Modelos Veículos");
         modeloVeiculoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modeloVeiculoMenuItemActionPerformed(evt);
@@ -127,7 +124,7 @@ public class MenuView extends javax.swing.JFrame {
         });
         cadastroMenu.add(jMenuItem1);
 
-        jMenuItem2.setText("Usuário");
+        jMenuItem2.setText("Usuários");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -156,32 +153,19 @@ public class MenuView extends javax.swing.JFrame {
 
         menuBar.add(atividadesMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
-
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,15 +226,12 @@ public class MenuView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenu atividadesMenu;
     private javax.swing.JMenu cadastroMenu;
     private javax.swing.JMenuItem clienteMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem corVeiculoMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem entradaSaidaMenuItem;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem marcaVeiculoMenuItem;

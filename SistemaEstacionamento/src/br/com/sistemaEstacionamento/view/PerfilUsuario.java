@@ -1,9 +1,5 @@
 package br.com.sistemaEstacionamento.view;
 
-/**
- *
- * @author Daniel
- */
 public enum PerfilUsuario {
     
     ADMINISTRADOR(1, CarregadorMenuPerfilAdm.class), 
